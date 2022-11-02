@@ -72,27 +72,32 @@ proxy-providers:
   #美国节点
   MyProxy-US:
     <<: *MyProxy #引用锚点内容
-    filter: "美|🇺🇲|US|(?i)States|American"
+    filter: "(?=.*(美|US|🇺🇸|(?i)States|American))^((?!(港|台|日|韩|新)).)*$"
   
   #香港节点
   MyProxy-HK:
     <<: *MyProxy #引用锚点内容
-    filter: "港|🇭🇰|HK|(?i)Hong"
+    filter: "(?=.*(港|HK|🇭🇰|(?i)Hong))^((?!(台|日|韩|新|美)).)*$"
   
   #日本节点
   MyProxy-JP:
     <<: *MyProxy #引用锚点内容
-    filter: "日|🇯🇵|东京|JP|(?i)Japan"
+    filter: "(?=.*(日|JP|🇯🇵|(?i)Japan))^((?!(港|台|韩|新|美|利亚)).)*$"
   
   #台湾节点
   MyProxy-TW:
     <<: *MyProxy #引用锚点内容
-    filter: "台|🇨🇳|🇹🇼|湾|TW|(?i)Taiwan"
+    filter: "(?=.*(台|TW|(?i)Taiwan))^((?!(港|日|韩|新|美)).)*$"
   
   #新加坡节点
   MyProxy-SG:
     <<: *MyProxy #引用锚点内容
-    filter: "新加坡|坡|狮城|🇸🇬|SG|(?i)Singapore"
+    filter: "(?=.*(新|狮|獅|SG|🇸🇬|(?i)Singapore))^((?!(港|台|日|韩|美)).)*$"
+
+  #越南节点
+  MyProxy-VN:
+    <<: *MyProxy #引用锚点内容
+    filter: "(?=.*(越|VN|(?i) Việt Nam|Hà|Hồ|🇻🇳))^((?!(台|日|韩|新|美)).)*$"
 
 #策略组
 proxy-groups:
@@ -101,11 +106,11 @@ proxy-groups:
     type: select
     use:
       - MyProxy
-    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Rocket.png
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Available_1.png
 
   - name: 自动选择
     type: url-test
-    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Auto.png
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Rocket.png
     use: 
        - MyProxy
     url: "http://cp.cloudflare.com/generate_204"
@@ -121,7 +126,7 @@ proxy-groups:
 
   - name: US 美国
     type: url-test
-    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/United_States.png
+    icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/US.png
     use:
       - MyProxy-US
     url: "http://cp.cloudflare.com/generate_204"
@@ -129,7 +134,7 @@ proxy-groups:
 
   - name: HK 香港
     type: url-test
-    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Hong_Kong.png
+    icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/HK.png
     use:
       - MyProxy-HK
     url: "http://cp.cloudflare.com/generate_204"
@@ -137,7 +142,7 @@ proxy-groups:
   
   - name: JP 日本
     type: url-test
-    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Japan.png
+    icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/JP.png
     use:
       - MyProxy-JP
     url: "http://cp.cloudflare.com/generate_204"
@@ -145,7 +150,7 @@ proxy-groups:
   
   - name: TW 台湾
     type: url-test
-    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/China.png
+    icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/TW.png
     use:
       - MyProxy-TW
     url: "http://cp.cloudflare.com/generate_204"
@@ -153,9 +158,17 @@ proxy-groups:
   
   - name: SG 新加坡
     type: url-test
-    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Singapore.png
+    icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/SG.png
     use:
       - MyProxy-SG
+    url: "http://cp.cloudflare.com/generate_204"
+    interval: 300
+
+	name: VN 越南
+    type: url-test
+    icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/VN.png
+    use:
+      - MyProxy-VN
     url: "http://cp.cloudflare.com/generate_204"
     interval: 300
   
@@ -177,37 +190,7 @@ proxy-groups:
     type: select
     proxies:
       *G
-    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Media.png
-  
-  - name: Netflix
-    type: select
-    proxies:
-      *G
-    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Netflix.png
-  
-  - name: Disney+
-    type: select
-    proxies:
-      *G
-    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Disney.png
-  
-  - name: HBO
-    type: select
-    proxies:
-      *G
-    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/HBO.png
-  
-  - name: Youtube
-    type: select
-    proxies:
-      *G
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/YouTube.png
-  
-  - name: Spotify
-    type: select
-    proxies:
-      *G
-    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Spotify.png
   
   - name: TikTok
     type: select
@@ -215,25 +198,11 @@ proxy-groups:
       *G
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/TikTok.png
   
-  - name: Bilibili
-    type: select
-    proxies:
-      - DIRECT
-      - HK 香港
-      - TW 台湾
-    icon: https://raw.githubusercontent.com/erdongchanyo/icon/main/Policy-Filter/Bilibili.png
-  
-  - name: Telegram
+  - name: 国际社交
     type: select
     proxies:
       *G
-    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Telegram.png
-  
-  - name: Twitter
-    type: select
-    proxies:
-      *G
-    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Twitter.png
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Google_Search.png
   
   - name: Speedtest
     type: select
@@ -241,43 +210,19 @@ proxy-groups:
       *G
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Speedtest.png
   
-  - name: PayPal
-    type: select
-    proxies:
-      *G
-    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/PayPal.png
-  
-  - name: TestFlight
-    type: select
-    proxies:
-      *G
-    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/TestFlight.png
-  
   - name: Apple
     type: select
     proxies:
       *G
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Apple.png
   
-  - name: Google
+  - name: 全球加速
     type: select
     proxies:
       *G
-    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Google.png
+    icon: https://raw.githubusercontent.com/KOP-XIAO/QuantumultX/master/img/dragonball/1.PNG
   
-  - name: Microsoft
-    type: select
-    proxies:
-      *G
-    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Microsoft.png
-  
-  - name: Weibo
-    type: select
-    proxies:
-      *G
-    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Weibo.png
-  
-  - name: 中国大陆
+  - name: 国内服务
     type: select
     proxies:
       - DIRECT
@@ -289,14 +234,14 @@ proxy-groups:
       - TW 台湾
       - SG 新加坡
       - 漏网之鱼
-    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Heart.png
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/China.png
   
   - name: 漏网之鱼
     type: select
     proxies:
       - Proxy
       - DIRECT
-    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Pig.png
+    icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/Final.png
 
 #远程规则集合
 rule-providers:
@@ -304,32 +249,26 @@ rule-providers:
   Netflix-rules:
     behavior: classical
     interval: 86400
-    name: Netflix
+    name: 国际媒体
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/release/rule/Clash/Netflix/Netflix.yaml
 
   Disney-rules:
     behavior: classical
     interval: 86400
-    name: Disney
+    name: 国际媒体
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/release/rule/Clash/Disney/Disney.yaml
 
   HBO-rules:
     behavior: classical
     interval: 86400
-    name: HBO
+    name: 国际媒体
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/release/rule/Clash/HBO/HBO.yaml
 
   Youtube-rules:
     behavior: classical
     interval: 86400
-    name: Youtube
+    name: 国际媒体
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/release/rule/Clash/YouTube/YouTube.yaml
-
-  Spotify-rules:
-    behavior: classical
-    interval: 86400
-    name: Spotify
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/release/rule/Clash/Spotify/Spotify.yaml
 
   TikTok-rules:
     behavior: classical
@@ -337,29 +276,11 @@ rule-providers:
     name: TikTok
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/release/rule/Clash/TikTok/TikTok.yaml
 
-  Bilibili-rules:
-    behavior: classical
-    interval: 86400
-    name: Bilibili
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/release/rule/Clash/BiliBili/BiliBili.yaml
-
   Telegram-rules:
     behavior: classical
     interval: 86400
-    name: Telegram
+    name: 国际社交
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/release/rule/Clash/Telegram/Telegram.yaml
-
-  Clubhouse-rules:
-    behavior: classical
-    interval: 86400
-    name: Clubhouse
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/release/rule/Clash/Clubhouse/Clubhouse.yaml
-
-  ClubhouseIP-rules:
-    behavior: classical
-    interval: 86400
-    name: ClubhouseIP
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/release/rule/Clash/ClubhouseIP/ClubhouseIP.yaml
 
   Twitter-rules:
     behavior: classical
@@ -373,18 +294,6 @@ rule-providers:
     name: Speedtest
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/release/rule/Clash/Speedtest/Speedtest.yaml
 
-  PayPal-rules:
-    behavior: classical
-    interval: 86400
-    name: PayPal
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/release/rule/Clash/PayPal/PayPal.yaml
-
-  TestFlight-rules:
-    behavior: classical
-    interval: 86400
-    name: TestFlight
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/release/rule/Clash/TestFlight/TestFlight.yaml
-
   Apple-rules:
     behavior: classical
     interval: 86400
@@ -394,68 +303,48 @@ rule-providers:
   Google-rules:
     behavior: classical
     interval: 86400
-    name: Google
+    name: 全球加速
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/release/rule/Clash/Google/Google.yaml
-
-  Microsoft-rules:
-    behavior: classical
-    interval: 86400
-    name: Microsoft
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/release/rule/Clash/Microsoft/Microsoft.yaml
-
-  Weibo-rules:
-    behavior: classical
-    interval: 86400
-    name: Weibo
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/release/rule/Clash/Weibo/Weibo.yaml
 
   Mainland-rules:
     behavior: classical
     interval: 86400
-    name: Mainland
+    name: 国内服务
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/release/rule/Clash/China/China.yaml
 
   MainlandIP-rules:
     behavior: ipcidr
     interval: 86400
-    name: MainlandIP
+    name: 国内服务
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/release/rule/Clash/ChinaIPs/ChinaIPs_IP.yaml
 
   Global-rules:
     behavior: classical
     interval: 86400
-    name: Outside
+    name: 全球加速
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/release/rule/Clash/Global/Global_Classical.yaml
 
   ASN-rules: 
     behavior: classical
     interval: 86400
-    name: ASN
+    name: 国内服务
     url: https://raw.githubusercontent.com/Coldvvater/Clash/master/RuleSet/ASN_China.yaml
 
 #分流规则引用
 rules:
-  - RULE-SET,Netflix-rules,Netflix
-  - RULE-SET,Disney-rules,Disney+
-  - RULE-SET,HBO-rules,HBO
-  - RULE-SET,Youtube-rules,Youtube
-  - RULE-SET,Spotify-rules,Spotify
+  - RULE-SET,Netflix-rules,国际媒体
+  - RULE-SET,Disney-rules,国际媒体
+  - RULE-SET,HBO-rules,国际媒体
+  - RULE-SET,Youtube-rules,国际媒体
   - RULE-SET,TikTok-rules,TikTok
-  - RULE-SET,Bilibili-rules,Bilibili
-  - RULE-SET,Telegram-rules,Telegram
-  - RULE-SET,Clubhouse-rules,国外媒体
-  - RULE-SET,ClubhouseIP-rules,国外媒体
-  - RULE-SET,Twitter-rules,Twitter
+  - RULE-SET,Telegram-rules,国际社交
+  - RULE-SET,Twitter-rules,国际社交
   - RULE-SET,Speedtest-rules,Speedtest
-  - RULE-SET,PayPal-rules,PayPal
-  - RULE-SET,TestFlight-rules,TestFlight
   - RULE-SET,Apple-rules,Apple
-  - RULE-SET,Google-rules,Google
-  - RULE-SET,Microsoft-rules,Microsoft
-  - RULE-SET,Weibo-rules,Weibo
-  #- RULE-SET,Mainland-rules,中国大陆
-  #- RULE-SET,MainlandIP-rules,中国大陆
-  - RULE-SET,Global-rules,Proxy
+  - RULE-SET,Google-rules,全球加速
+  #- RULE-SET,Mainland-rules,国内服务
+  #- RULE-SET,MainlandIP-rules,国内服务
+  - RULE-SET,Global-rules,全球加速
 # ⚠注意：本配置目前主流使用ASN规则作为中国大陆分流，如不想使用，请在ASN规则前面加#号注释，同时把Mainland-rules、MainlandIP-rules及GEOIP前面的#号删除放行使其生效。
   - RULE-SET,ASN-rules,DIRECT
   #- GEOIP,CN,DIRECT
