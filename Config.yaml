@@ -248,23 +248,11 @@ proxy-groups:
 #远程规则集合
 rule-providers:
     
-  Netflix-rules:
-    behavior: classical
-    interval: 86400
-    name: 国际媒体
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/release/rule/Clash/Netflix/Netflix.yaml
-
   Disney-rules:
     behavior: classical
     interval: 86400
     name: 国际媒体
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/release/rule/Clash/Disney/Disney.yaml
-
-  HBO-rules:
-    behavior: classical
-    interval: 86400
-    name: 国际媒体
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/release/rule/Clash/HBO/HBO.yaml
 
   Youtube-rules:
     behavior: classical
@@ -326,11 +314,11 @@ rule-providers:
     name: 全球加速
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/release/rule/Clash/Global/Global_Classical.yaml
 
-  ASN-rules: 
-    behavior: classical
-    interval: 86400
-    name: 国内服务
-    url: https://raw.githubusercontent.com/Coldvvater/Clash/master/RuleSet/ASN_China.yaml
+  #ASN-rules: 
+    #behavior: classical
+    #interval: 86400
+    #name: 国内服务
+    #url: https://raw.githubusercontent.com/Coldvvater/Clash/master/RuleSet/ASN_China.yaml
 
 #分流规则引用
 rules:
@@ -348,6 +336,6 @@ rules:
   - RULE-SET,MainlandIP-rules,国内服务
   - RULE-SET,Global-rules,全球加速
 # ⚠注意：本配置目前主流使用ASN规则作为中国大陆分流，如不想使用，请在ASN规则前面加#号注释，同时把Mainland-rules、MainlandIP-rules及GEOIP前面的#号删除放行使其生效。
-  - RULE-SET,ASN-rules,DIRECT
+  #- RULE-SET,ASN-rules,DIRECT
   - GEOIP,CN,DIRECT
   - MATCH,漏网之鱼
