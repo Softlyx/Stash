@@ -144,7 +144,7 @@ proxy-groups:
     url: "http://cp.cloudflare.com/generate_204"
     interval: 300
 
-  - #name: TW 台湾
+ # - name: TW 台湾
     #type: url-test
     #icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/TW.png
     #use:
@@ -160,13 +160,13 @@ proxy-groups:
     url: "http://cp.cloudflare.com/generate_204"
     interval: 300
   
-  - name: GJ 国际
-    type: url-test
-    icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/UN.png
-    use:
-      - MyProxy-GJ
-    url: "http://cp.cloudflare.com/generate_204"
-    interval: 300
+ # - name: GJ 国际
+   # type: url-test
+   # icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/UN.png
+   # use:
+   #   - MyProxy-GJ
+   # url: "http://cp.cloudflare.com/generate_204"
+   # interval: 300
 
   - name: 全球
     type: select
