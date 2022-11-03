@@ -85,7 +85,7 @@ proxy-providers:
     #<<: *MyProxy #引用锚点内容
     #filter: "台|TW|(?i)Taiwan"
   
-  #新加坡节点
+  #狮城节点
   MyProxy-SG:
     <<: *MyProxy #引用锚点内容
     filter: "新|狮|獅|SG|🇸🇬|(?i)Singapore"
@@ -114,7 +114,7 @@ proxy-groups:
 
   - name: Fallback
     type: fallback
-    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Available.png
+    icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/Touhou.png
     use:
       - MyProxy
     url: "http://cp.cloudflare.com/generate_204"
@@ -152,7 +152,7 @@ proxy-groups:
     #url: "http://cp.cloudflare.com/generate_204"
     #interval: 300
   
-  - name: SG 新加坡
+  - name: SG 狮城
     type: url-test
     icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/SG.png
     use:
@@ -176,53 +176,53 @@ proxy-groups:
       - US 美国
       - HK 香港
       - JP 日本
-      - SG 新加坡
+      - SG 狮城
       - 漏网之鱼
       - DIRECT
-    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/World_Map.png
-  
-  - name: 国际媒体
-    type: select
-    proxies:
-      *G
-    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Media.png
-  
-  - name: TikTok
-    type: select
-    proxies:
-      *G
-    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/TikTok.png
-  
-  - name: 国际社交
-    type: select
-    proxies:
-      *G
-    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Telegram.png
-  
+    icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/UN.png
+
   - name: Speedtest
     type: select
     proxies:
       *G
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Speedtest.png
   
-  - name: TestFlight
+  - name: TikTok
     type: select
     proxies:
       *G
-    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/TestFlight.png
-  
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/TikTok.png
+
+  - name: Emby
+    type: select
+    proxies:
+      *G
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Emby.png
+    
+  - name: 国际社交
+    type: select
+    proxies:
+      *G
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Google_Search.png
+
+  - name: 国际媒体
+    type: select
+    proxies:
+      *G
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/YouTube.png
+
+  - name: 全球加速
+    type: select
+    proxies:
+      *G
+    icon: https://raw.githubusercontent.com/KOP-XIAO/QuantumultX/master/img/dragonball/1.PNG
+    
   - name: Apple服务
     type: select
     proxies:
       *G
     icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Apple.png
-  
-  - name: 全球加速
-    type: select
-    proxies:
-      *G
-    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Google.png
-  
+    
   - name: 国内服务
     type: select
     proxies:
@@ -232,20 +232,25 @@ proxy-groups:
       - US 美国
       - HK 香港
       - JP 日本
-      - SG 新加坡
+      - SG 狮城
       - 漏网之鱼
-    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Heart.png
+    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/China.png
   
   - name: 漏网之鱼
     type: select
     proxies:
       - Proxy
       - DIRECT
-    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/Pig.png
+    icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/Final.png
 
 #远程规则集合
 rule-providers:
-    
+
+  Speedtest-rules:
+    behavior: classical
+    interval: 86400
+    name: Speedtest
+    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/release/rule/Clash/Speedtest/Speedtest.yaml	
 
   Youtube-rules:
     behavior: classical
@@ -270,12 +275,6 @@ rule-providers:
     interval: 86400
     name: Twitter
     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/release/rule/Clash/Twitter/Twitter.yaml
-
-  Speedtest-rules:
-    behavior: classical
-    interval: 86400
-    name: Speedtest
-    url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/release/rule/Clash/Speedtest/Speedtest.yaml
 
   TestFlight-rules:
     behavior: classical
