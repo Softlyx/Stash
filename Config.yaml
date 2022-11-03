@@ -1,7 +1,3 @@
-# MengRain & Coldvvater-Config   (Stash)
-# Date:2022.10.5
-# 最后一次更新于：2022.10.10
-# Author: MengRain  （我的TG频道：https://t.me/mengyulianmian  可从频道进群交流）
 # 下载配置后,请手动添加机场订阅
 # 找到 {远程订阅} 部分，将MyProxy 部分的 url替换为自己的机场订阅链接  
 
@@ -99,6 +95,12 @@ proxy-providers:
     <<: *MyProxy #引用锚点内容
     filter: "(?=.*(越|VN|(?i) Việt Nam|Hà|Hồ|🇻🇳))^((?!(台|日|韩|新|美)).)*$"
 
+  #国际节点
+  MyProxy-GJ:
+    <<: *MyProxy #引用锚点内容
+    filter: "(?=.*)^((?!(港|HK|日|JP|台|TW|越|VN|新|SG|美|US|🇨🇳|🇭🇰|🇺🇸|🇯🇵|🇻🇳|🇸🇬)).)*$"
+
+
 #策略组
 proxy-groups:
 
@@ -184,7 +186,7 @@ proxy-groups:
       - SG 新加坡
       - 漏网之鱼
       - DIRECT
-    icon: https://raw.githubusercontent.com/Koolson/Qure/master/IconSet/Color/World_Map.png
+    icon: https://raw.githubusercontent.com/Orz-3/mini/master/Color/UN.png
   
   - name: 国外媒体
     type: select
@@ -342,10 +344,10 @@ rules:
   - RULE-SET,Speedtest-rules,Speedtest
   - RULE-SET,Apple-rules,Apple
   - RULE-SET,Google-rules,全球加速
-  #- RULE-SET,Mainland-rules,国内服务
-  #- RULE-SET,MainlandIP-rules,国内服务
+  - RULE-SET,Mainland-rules,国内服务
+  - RULE-SET,MainlandIP-rules,国内服务
   - RULE-SET,Global-rules,全球加速
 # ⚠注意：本配置目前主流使用ASN规则作为中国大陆分流，如不想使用，请在ASN规则前面加#号注释，同时把Mainland-rules、MainlandIP-rules及GEOIP前面的#号删除放行使其生效。
   - RULE-SET,ASN-rules,DIRECT
-  #- GEOIP,CN,DIRECT
+  - GEOIP,CN,DIRECT
   - MATCH,漏网之鱼
