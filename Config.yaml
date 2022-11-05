@@ -168,7 +168,7 @@ proxy-groups:
    # url: "http://cp.cloudflare.com/generate_204"
    # interval: 300
 
-  - name: 全球
+  - name: UN 全球
     type: select
     proxies: &G
       - 自动选择
